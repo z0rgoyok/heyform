@@ -20,6 +20,28 @@ GitHub Actions must stay disabled for this fork. Production deploys are manual a
 
 The fork contains no workflow files under `.github/workflows`.
 
+## Ops Repository Bootstrap
+
+The deployment source of truth is a separate repository:
+
+- Repository: `https://github.com/z0rgoyok/vps-vpn-ops`
+- Expected local path: `/Users/deniszabozhanov/dev/tools/vps-vpn-ops`
+- HeyForm service docs: `docs/heyform-operations.md`
+- Host inventory: `docs/inventory.md`
+- Operator runbook: `docs/runbook.md`
+- Deploy script: `scripts/deploy-heyform.sh`
+- Host env file: `hosts/msk1-vikunja.env`
+
+If `/Users/deniszabozhanov/dev/tools/vps-vpn-ops` is missing, clone it first:
+
+```bash
+mkdir -p /Users/deniszabozhanov/dev/tools
+git clone https://github.com/z0rgoyok/vps-vpn-ops.git \
+  /Users/deniszabozhanov/dev/tools/vps-vpn-ops
+```
+
+Before changing production, read the HeyForm operations document in that repository. The ops repository owns `Docker Compose`, `Caddy`, host access, Cloudflare DNS state, and rollback instructions. This HeyForm fork owns application source code only.
+
 ## Deploy
 
 From the ops repository:
