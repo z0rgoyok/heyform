@@ -1,18 +1,18 @@
 export enum InteractiveModeEnum {
-  GENERAL = 1,
-  INTERACTIVE,
-  POPUP
+  GENERAL = 'GENERAL',
+  INTERACTIVE = 'INTERACTIVE',
+  POPUP = 'POPUP'
 }
 
 export enum FormKindEnum {
-  SURVEY = 1,
-  QUIZ,
-  CONTACT
+  SURVEY = 'SURVEY',
+  QUIZ = 'QUIZ',
+  CONTACT = 'CONTACT'
 }
 
 export enum FormStatusEnum {
-  NORMAL = 1,
-  TRASH
+  NORMAL = 'NORMAL',
+  TRASH = 'TRASH'
 }
 
 export enum CaptchaKindEnum {

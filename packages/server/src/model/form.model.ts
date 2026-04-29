@@ -41,7 +41,7 @@ export class FormModel extends Document {
   description?: string
 
   @Prop({
-    type: Number,
+    type: String,
     required: true,
     enum: Object.values(InteractiveModeEnum),
     default: InteractiveModeEnum.GENERAL
@@ -49,7 +49,7 @@ export class FormModel extends Document {
   interactiveMode: InteractiveModeEnum
 
   @Prop({
-    type: Number,
+    type: String,
     required: true,
     enum: Object.values(FormKindEnum),
     default: FormKindEnum.SURVEY
@@ -108,7 +108,7 @@ export class FormModel extends Document {
   generatedAt?: number
 
   @Prop({
-    type: Number,
+    type: String,
     required: true,
     enum: Object.values(FormStatusEnum),
     default: FormStatusEnum.NORMAL

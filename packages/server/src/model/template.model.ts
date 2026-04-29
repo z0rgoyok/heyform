@@ -27,7 +27,7 @@ export class TemplateModel extends Document {
   description?: string
 
   @Prop({
-    type: Number,
+    type: String,
     required: true,
     enum: Object.values(InteractiveModeEnum),
     default: InteractiveModeEnum.GENERAL
@@ -35,7 +35,7 @@ export class TemplateModel extends Document {
   interactiveMode: InteractiveModeEnum
 
   @Prop({
-    type: Number,
+    type: String,
     required: true,
     enum: Object.values(FormKindEnum),
     default: FormKindEnum.SURVEY

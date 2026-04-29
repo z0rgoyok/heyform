@@ -46,10 +46,10 @@ export class TemplateType {
   @Field({ nullable: true })
   description?: string
 
-  @Field(type => Number)
+  @Field(type => String)
   interactiveMode: InteractiveModeEnum
 
-  @Field(type => Number)
+  @Field(type => String)
   kind: FormKindEnum
 
   @Field(type => ThemeSettingsType, { nullable: true })

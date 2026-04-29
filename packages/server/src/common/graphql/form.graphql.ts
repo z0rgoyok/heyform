@@ -294,8 +294,8 @@ export class FormsInput {
   @Field()
   projectId: string
 
-  @Field(type => Number)
-  @IsEnum(Object.values(FormStatusEnum))
+  @Field(type => String)
+  @IsEnum(FormStatusEnum)
   status: FormStatusEnum
 
   @Field({ nullable: true })
@@ -322,15 +322,16 @@ export class CreateFormInput {
   name?: string
 
   @Field(type => GraphQLJSON, { nullable: true })
+  @IsOptional()
   @IsArray()
   nameSchema?: any[]
 
-  @Field(type => Number)
-  @IsEnum(Object.values(InteractiveModeEnum))
+  @Field(type => String)
+  @IsEnum(InteractiveModeEnum)
   interactiveMode: InteractiveModeEnum
 
-  @Field(type => Number)
-  @IsEnum(Object.values(FormKindEnum))
+  @Field(type => String)
+  @IsEnum(FormKindEnum)
   kind: FormKindEnum
 }
 
