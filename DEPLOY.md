@@ -20,36 +20,36 @@ GitHub Actions must stay disabled for this fork. Production deploys are manual a
 
 The fork contains no workflow files under `.github/workflows`.
 
-## Ops Repository Bootstrap
+## Ops Repository
 
-The deployment source of truth is a separate repository:
+The deployment source of truth is an existing local ops repository:
 
 - Repository: `https://github.com/z0rgoyok/vps-vpn-ops`
-- Expected local path: `/Users/deniszabozhanov/dev/tools/vps-vpn-ops`
+- Local path: `/Users/deniszabozhanov/dev/tools/vps-vpn-ops`
 - HeyForm service docs: `docs/heyform-operations.md`
 - Host inventory: `docs/inventory.md`
 - Operator runbook: `docs/runbook.md`
 - Deploy script: `scripts/deploy-heyform.sh`
 - Host env file: `hosts/msk1-vikunja.env`
 
-If `/Users/deniszabozhanov/dev/tools/vps-vpn-ops` is missing, clone it first:
-
-```bash
-mkdir -p /Users/deniszabozhanov/dev/tools
-git clone https://github.com/z0rgoyok/vps-vpn-ops.git \
-  /Users/deniszabozhanov/dev/tools/vps-vpn-ops
-```
-
-Before changing production, read the HeyForm operations document in that repository. The ops repository owns `Docker Compose`, `Caddy`, host access, Cloudflare DNS state, and rollback instructions. This HeyForm fork owns application source code only.
+Before changing production, use that local ops repository and read its HeyForm operations document. The ops repository owns `Docker Compose`, `Caddy`, host access, Cloudflare DNS state, and rollback instructions. This HeyForm fork owns application source code only.
 
 ## Deploy
 
-From the ops repository:
+Run deploy inside the local ops repository:
 
 ```bash
 cd /Users/deniszabozhanov/dev/tools/vps-vpn-ops
 HEYFORM_SOURCE_DIR=/Users/deniszabozhanov/dev/wasteland_w/heyform \
   make deploy-heyform HOST_FILE=hosts/msk1-vikunja.env
+```
+
+Equivalent single command from this repository:
+
+```bash
+HEYFORM_SOURCE_DIR=/Users/deniszabozhanov/dev/wasteland_w/heyform \
+  make -C /Users/deniszabozhanov/dev/tools/vps-vpn-ops \
+  deploy-heyform HOST_FILE=hosts/msk1-vikunja.env
 ```
 
 The deploy script:
